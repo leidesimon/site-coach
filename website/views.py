@@ -16,4 +16,11 @@ def index(request):
 
         return render(request, 'index.html', args)
 
-    return render(request, 'index.html') 
+    return render(request, 'index.html')
+
+    def listas_coachs(request):
+    listar_coachs
+
+
+
+    return render (request, 'listar_coachs'args)
