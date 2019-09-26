@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from website.models import *
 
 # Create your views here.
@@ -18,9 +18,17 @@ def index(request):
 
     return render(request, 'index.html')
 
-    def listas_coachs(request):
-    listar_coachs
+def listar_coachs(request):
+    listar_coachs = Coach.objects.filter(ativo=True).all()
+    args = {
+        'listar_coachs': listar_coachs
+    }
+    return render (request, 'lista_coach.html', args)
 
-
-
-    return render (request, 'listar_coachs'args)
+def delete_coach(request, id):
+    item = Coach.objescts.get(id=id)
+    if item is not None:
+        item.ativo = False
+        item.save()
+        return redirect('/coach_listar')
+    return render (request, 'index.html', {'msg': 'apagou'})

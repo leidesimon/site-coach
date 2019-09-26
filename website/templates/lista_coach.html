@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
     <title>Lista Coachs</title>
 
 </head>
 <body>
     <marquee>
-        <h1> Lista de suas frases perfeitas</h1>
+        <h1 class = titulo-lista> Lista de suas frases perfeitas</h1>
     </marquee>
     {% for item in listar_coachs %}
+    <!-- o for está listando cada item -->
     <p><Strong> Nome do Coach:</Strong></p>
     <p><Strong> Motive-se:</Strong> </p>
     <p><Strong> A inspiração desse ser</Strong></p>
+    <a href='/coah/delete/{{item.id}}></a>
 </body>
-</html>
+{% endblock %}
