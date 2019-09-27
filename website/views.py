@@ -26,9 +26,15 @@ def listar_coachs(request):
     return render (request, 'lista_coach.html', args)
 
 def delete_coach(request, id):
-    item = Coach.objescts.get(id=id)
+    item = Coach.objescts.filter(id=id).first()
     if item is not None:
         item.ativo = False
         item.save()
+
+        listar_coachs = Coach.objects.filter(ativo=True).all()
+        args = {
+            'Listar_coachs': listar_coachs,
+            'ms': 'Não há coachs cadastrados, seja o primeiro!'
+        }
         return redirect('/coach_listar')
     return render (request, 'index.html', {'msg': 'apagou'})
